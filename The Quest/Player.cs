@@ -59,5 +59,21 @@ namespace The_Quest
                 _equippedWeapon.Attack(direction, random);
             }
         }
+        public bool CheckPotionUsed(string potionName)
+        {
+            IPotion potion;
+            bool potionUsed = true;
+
+            foreach (Weapon weapon in _inventory)
+            {
+                if (weapon.Name == potionName && weapon is IPotion)
+                {
+                    potion = weapon as IPotion;
+                    potionUsed = potion.Used;
+                }
+            }
+
+            return potionUsed;
+        }
     }
 }
