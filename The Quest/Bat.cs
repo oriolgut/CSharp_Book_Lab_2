@@ -9,11 +9,18 @@ namespace The_Quest
 
         public override void Move(Random random)
         {
-            if(random.Next(2) == 1)
+            if(random.Next(1, 2) == 1)
             {
-                
+                location = Move(FindPlayerDirection(game.PlayerLocation), game.Boundaries);                
             }
-                
+            else
+            {
+                location = Move((Direction)random.Next(1, 4), game.Boundaries);
+            }
+            if (NearPlayer())
+            {
+                game.HitPlayer(2, random);
+            }
         }
     }
 }
