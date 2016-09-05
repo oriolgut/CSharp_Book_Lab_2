@@ -185,6 +185,7 @@
             this.pictureBoxWeapon2.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxWeapon2.TabIndex = 1;
             this.pictureBoxWeapon2.TabStop = false;
+            this.pictureBoxWeapon2.Click += new System.EventHandler(this.OnPictureBoxWeapon2Click);
             // 
             // pictureBoxWeapon1
             // 
@@ -194,6 +195,7 @@
             this.pictureBoxWeapon1.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxWeapon1.TabIndex = 2;
             this.pictureBoxWeapon1.TabStop = false;
+            this.pictureBoxWeapon1.Click += new System.EventHandler(this.OnPictureBoxWeapon1Click);
             // 
             // pictureBoxWeapon3
             // 
@@ -203,6 +205,7 @@
             this.pictureBoxWeapon3.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxWeapon3.TabIndex = 3;
             this.pictureBoxWeapon3.TabStop = false;
+            this.pictureBoxWeapon3.Click += new System.EventHandler(this.OnPictureBoxWeapon3Click);
             // 
             // pictureBoxPotion1
             // 
@@ -212,6 +215,7 @@
             this.pictureBoxPotion1.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxPotion1.TabIndex = 4;
             this.pictureBoxPotion1.TabStop = false;
+            this.pictureBoxPotion1.Click += new System.EventHandler(this.OnPictureBoxPotion1Click);
             // 
             // pictureBoxPotion2
             // 
@@ -221,6 +225,7 @@
             this.pictureBoxPotion2.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxPotion2.TabIndex = 5;
             this.pictureBoxPotion2.TabStop = false;
+            this.pictureBoxPotion2.Click += new System.EventHandler(this.OnPictureBoxPotion2Click);
             // 
             // pictureBoxPlayer
             // 
@@ -231,7 +236,6 @@
             this.pictureBoxPlayer.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxPlayer.TabIndex = 6;
             this.pictureBoxPlayer.TabStop = false;
-            this.pictureBoxPlayer.Visible = false;
             // 
             // pictureBoxBowToCollect
             // 
@@ -348,7 +352,7 @@
             this.buttonMoveDown.TabIndex = 17;
             this.buttonMoveDown.Text = "↓";
             this.buttonMoveDown.UseVisualStyleBackColor = true;
-            this.buttonMoveDown.Click += new System.EventHandler(this.ButtonMoveDownClick);
+            this.buttonMoveDown.Click += new System.EventHandler(this.OnButtonMoveDownClick);
             // 
             // groupBoxMove
             // 
@@ -386,6 +390,7 @@
             this.buttonAttackUp.TabIndex = 14;
             this.buttonAttackUp.Text = "↑";
             this.buttonAttackUp.UseVisualStyleBackColor = true;
+            this.buttonAttackUp.Click += new System.EventHandler(this.buttonAttackUp_Click);
             // 
             // buttonAttackDown
             // 
@@ -395,6 +400,7 @@
             this.buttonAttackDown.TabIndex = 17;
             this.buttonAttackDown.Text = "↓";
             this.buttonAttackDown.UseVisualStyleBackColor = true;
+            this.buttonAttackDown.Click += new System.EventHandler(this.OnButtonAttackDownClick);
             // 
             // buttonAttackLeft
             // 
@@ -404,6 +410,7 @@
             this.buttonAttackLeft.TabIndex = 15;
             this.buttonAttackLeft.Text = "←";
             this.buttonAttackLeft.UseVisualStyleBackColor = true;
+            this.buttonAttackLeft.Click += new System.EventHandler(this.OnButtonAttackLeftClick);
             // 
             // buttonAttackRight
             // 
@@ -413,6 +420,7 @@
             this.buttonAttackRight.TabIndex = 16;
             this.buttonAttackRight.Text = "→";
             this.buttonAttackRight.UseVisualStyleBackColor = true;
+            this.buttonAttackRight.Click += new System.EventHandler(this.OnButtonAttackRightClick);
             // 
             // pictureBoxSwordToCollect
             // 

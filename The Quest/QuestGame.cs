@@ -23,6 +23,84 @@ namespace The_Quest
             UpdateCharacters();
         }
 
+        private void OnButtonMoveUpClick(object sender, EventArgs e)
+        {
+            _game.Move(Direction.Up, _random);
+            UpdateCharacters();
+        }
+
+        private void OnButtonMoveLeftClick(object sender, EventArgs e)
+        {
+            _game.Move(Direction.Left, _random);
+            UpdateCharacters();
+        }
+
+        private void OnButtonMoveRightClick(object sender, EventArgs e)
+        {
+            _game.Move(Direction.Right, _random);
+            UpdateCharacters();
+        }
+
+        private void OnButtonMoveDownClick(object sender, EventArgs e)
+        {
+            _game.Move(Direction.Down, _random);
+            UpdateCharacters();
+        }
+
+        private void OnPictureBoxWeapon1Click(object sender, EventArgs e)
+        {
+            SelectInventoryItem(pictureBoxWeapon1, "Sword", "Weapon");
+            UpdateCharacters();
+        }
+
+        private void OnPictureBoxWeapon2Click(object sender, EventArgs e)
+        {
+            SelectInventoryItem(pictureBoxWeapon2, "Bow", "Weapon");
+            UpdateCharacters();
+        }
+
+        private void OnPictureBoxWeapon3Click(object sender, EventArgs e)
+        {
+            SelectInventoryItem(pictureBoxWeapon3, "Mace", "Weapon");
+            UpdateCharacters();
+        }
+
+        private void OnPictureBoxPotion1Click(object sender, EventArgs e)
+        {
+            SelectInventoryItem(pictureBoxPotion1, "Red Potion", "Potion");
+            UpdateCharacters();
+        }
+
+        private void OnPictureBoxPotion2Click(object sender, EventArgs e)
+        {
+            SelectInventoryItem(pictureBoxPotion2, "Blue Potion", "Potion");
+            UpdateCharacters();
+        }
+
+        private void buttonAttackUp_Click(object sender, EventArgs e)
+        {
+            _game.Attack(Direction.Up, _random);
+            UpdateCharacters();
+        }
+
+        private void OnButtonAttackRightClick(object sender, EventArgs e)
+        {
+            _game.Attack(Direction.Right, _random);
+            UpdateCharacters();
+        }
+
+        private void OnButtonAttackDownClick(object sender, EventArgs e)
+        {
+            _game.Attack(Direction.Down, _random);
+            UpdateCharacters();
+        }
+
+        private void OnButtonAttackLeftClick(object sender, EventArgs e)
+        {
+            _game.Attack(Direction.Left, _random);
+            UpdateCharacters();
+        }
+
         private void UpdateCharacters()
         {
             labelPlayerHitPoints.Text = _game.PlayerHitPoints.ToString();
@@ -41,7 +119,7 @@ namespace The_Quest
                 weaponControl.Visible = false;
             else
                 weaponControl.Visible = true;
-            if(_game.PlayerHitPoints >= 0)
+            if(_game.PlayerHitPoints <= 0)
             {
                 MessageBox.Show("You died", "system...");
                 Application.Exit();
@@ -52,6 +130,40 @@ namespace The_Quest
                 MessageBox.Show("You have defeated the enemies on this level");
                 _game.NewLevel(_random);
                 UpdateCharacters();
+            }
+        }
+        private void SelectInventoryItem(PictureBox item, string itemName, string weaponType)
+        {
+            if (_game.CheckPlayerInventory(itemName))
+            {
+                _game.Equip(itemName);
+                RemoveInventoryBorders();
+                item.BorderStyle = BorderStyle.FixedSingle;
+                SetupAttackButtons(weaponType);
+            }
+        }
+        private void RemoveInventoryBorders()
+        {
+            pictureBoxWeapon1.BorderStyle = BorderStyle.None;
+            pictureBoxWeapon2.BorderStyle = BorderStyle.None;
+            pictureBoxWeapon3.BorderStyle = BorderStyle.None;
+            pictureBoxPotion1.BorderStyle = BorderStyle.None;
+            pictureBoxPotion2.BorderStyle = BorderStyle.None;
+        }
+        private void SetupAttackButtons(string weaponType)
+        {
+            if ("weapon".Equals(weaponType.ToLower()))
+            {
+                buttonAttackUp.Text = "Up";
+                buttonAttackDown.Visible = true;
+                buttonAttackLeft.Visible = true;
+                buttonAttackRight.Visible = true;
+            } else if ("potion".Equals(weaponType.ToLower()))
+            {
+                buttonAttackUp.Text = "Drink";
+                buttonAttackDown.Visible = false;
+                buttonAttackLeft.Visible = false;
+                buttonAttackRight.Visible = false;
             }
         }
         private void SetPictureBoxVisibility()
@@ -126,43 +238,19 @@ namespace The_Quest
                     weaponControl = pictureBoxSwordToCollect;
                     break;
                 case "Bow":
-                    weaponControl = pictureBoxSwordToCollect;
+                    weaponControl = pictureBoxBowToCollect;
                     break;
                 case "Mace":
-                    weaponControl = pictureBoxSwordToCollect;
+                    weaponControl = pictureBoxMaceToCollect;
                     break;
                 case "Red Potion":
-                    weaponControl = pictureBoxSwordToCollect;
+                    weaponControl = pictureBoxPotionRedToCollect;
                     break;
                 case "Blue Potion":
-                    weaponControl = pictureBoxSwordToCollect;
+                    weaponControl = pictureBoxPotionBlueToCollect;
                     break;
             }
             return weaponControl;
-        }
-
-        private void OnButtonMoveUpClick(object sender, EventArgs e)
-        {
-            _game.Move(Direction.Up, _random);
-            UpdateCharacters();
-        }
-
-        private void OnButtonMoveLeftClick(object sender, EventArgs e)
-        {
-            _game.Move(Direction.Left, _random);
-            UpdateCharacters();
-        }
-
-        private void OnButtonMoveRightClick(object sender, EventArgs e)
-        {
-            _game.Move(Direction.Right, _random);
-            UpdateCharacters();
-        }
-
-        private void ButtonMoveDownClick(object sender, EventArgs e)
-        {
-            _game.Move(Direction.Down, _random);
-            UpdateCharacters();
         }
     }
 }
