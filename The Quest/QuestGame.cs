@@ -18,9 +18,14 @@ namespace The_Quest
         public QuestGame()
         {
             InitializeComponent();
-            _game = new Game(new Rectangle(78, 57, 420, 155));
+        }
+
+        private void QuestGame_Load(object sender, EventArgs e)
+        {
+            _game = new Game(new Rectangle(125, 94, 700, 280));
             _game.NewLevel(_random);
             UpdateCharacters();
+            SetTheLevel();
         }
 
         private void OnButtonMoveUpClick(object sender, EventArgs e)
@@ -75,6 +80,7 @@ namespace The_Quest
         {
             SelectInventoryItem(pictureBoxPotion2, "Blue Potion", "Potion");
             UpdateCharacters();
+            
         }
 
         private void buttonAttackUp_Click(object sender, EventArgs e)
@@ -118,7 +124,11 @@ namespace The_Quest
             if (_game.WeaponInRoom.PickedUp)
                 weaponControl.Visible = false;
             else
+            {
                 weaponControl.Visible = true;
+                weaponControl.Location = _game.WeaponInRoom.Location;
+            }
+
             if(_game.PlayerHitPoints <= 0)
             {
                 MessageBox.Show("You died", "system...");
@@ -183,24 +193,27 @@ namespace The_Quest
             if (_game.CheckPlayerInventory("Mace"))
                 pictureBoxWeapon3.Visible = true;
             if (_game.CheckPlayerInventory("Red Potion"))
-                pictureBoxPotion1.Visible = true;
+                if (!_game.CheckPotionUsed("Red Potion"))
+                    pictureBoxPotion1.Visible = true;      
             if (_game.CheckPlayerInventory("Blue Potion"))
-                pictureBoxPotion2.Visible = true;
+                if (!_game.CheckPotionUsed("Red Potion"))
+                    pictureBoxPotion2.Visible = true;
         }
         private bool UpdateEnemy(Enemy enemy, PictureBox pictureBoxEnemy, Label labelEnemyHitPoints)
         {
             bool isEnemyUpdated = false;
 
-            pictureBoxEnemy.Text = enemy.HitPoints.ToString();
+            labelEnemyHitPoints.Text = enemy.HitPoints.ToString();
 
             if (enemy.HitPoints > 0)
             {
-                labelEnemyHitPoints.Location = enemy.Location;
-                labelEnemyHitPoints.Visible = true;
+                pictureBoxEnemy.Location = enemy.Location;
+                pictureBoxEnemy.Visible = true;
                 isEnemyUpdated = true;
             }
             else
             {
+                pictureBoxEnemy.Visible = false; ;
                 labelEnemyHitPoints.Visible = false;
             }
 
@@ -252,5 +265,20 @@ namespace The_Quest
             }
             return weaponControl;
         }
+        private void SetTheLevel()
+        {
+            pictureBoxPlayer.BringToFront();
+            pictureBoxBat.SendToBack();
+            pictureBoxGhost.SendToBack();
+            pictureBoxGhoul.SendToBack();
+            pictureBoxBowToCollect.SendToBack();
+            pictureBoxMaceToCollect.SendToBack();
+            pictureBoxSwordToCollect.SendToBack();
+            pictureBoxPotionBlueToCollect.SendToBack();
+            pictureBoxPotionRedToCollect.SendToBack();
+        }
+
+
+
     }
 }

@@ -5,7 +5,7 @@ namespace The_Quest
 {
     class Sword : Weapon
     {
-        private const int ATTACK_RADIUS = 10;
+        private const int ATTACK_RADIUS = 20;
         private const int DAMAGE = 3;
 
         public Sword(Game game, Point location) : base(game, location)

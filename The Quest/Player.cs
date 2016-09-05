@@ -38,7 +38,7 @@ namespace The_Quest
         public void Equip(string weaponName)
         {
             foreach (Weapon weapon in _inventory)
-                if (weaponName.Equals(weapon.Name))
+                if (weaponName == weapon.Name)
                     _equippedWeapon = weapon;
         }
         
@@ -47,8 +47,12 @@ namespace The_Quest
             base.location = Move(direction, game.Boundaries);
             if (!game.WeaponInRoom.PickedUp)
             {
-               if (NearBy(game.WeaponInRoom.Location, 1))
+               if (NearBy(game.WeaponInRoom.Location, 5))
+                {
+                    game.WeaponInRoom.PickUpWeapon();
+                    _inventory.Add(game.WeaponInRoom);
                     Equip(game.WeaponInRoom.Name);
+                }
             }
         }
 

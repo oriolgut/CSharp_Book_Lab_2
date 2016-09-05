@@ -34,7 +34,10 @@ namespace The_Quest
             foreach (Enemy enemy in Enemies)
                 enemy.Move(random);
         }
-
+        public bool CheckPotionUsed(string potionName)
+        {
+            return _player.CheckPotionUsed(potionName);
+        }
         public void Equip(string weaponName)
         {
             _player.Equip(weaponName);
@@ -65,7 +68,6 @@ namespace The_Quest
         }
         public void NewLevel(Random random)
         {
-            //unfinished
             _level++;
             switch (_level)
             {

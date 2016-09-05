@@ -110,9 +110,8 @@
             this.labelGhoulHitPoints.AutoSize = true;
             this.labelGhoulHitPoints.Location = new System.Drawing.Point(63, 63);
             this.labelGhoulHitPoints.Name = "labelGhoulHitPoints";
-            this.labelGhoulHitPoints.Size = new System.Drawing.Size(75, 13);
+            this.labelGhoulHitPoints.Size = new System.Drawing.Size(0, 13);
             this.labelGhoulHitPoints.TabIndex = 7;
-            this.labelGhoulHitPoints.Text = "ghoulHitPoints";
             // 
             // labelGhoul
             // 
@@ -128,9 +127,8 @@
             this.labelGhostHitPoints.AutoSize = true;
             this.labelGhostHitPoints.Location = new System.Drawing.Point(63, 42);
             this.labelGhostHitPoints.Name = "labelGhostHitPoints";
-            this.labelGhostHitPoints.Size = new System.Drawing.Size(75, 13);
+            this.labelGhostHitPoints.Size = new System.Drawing.Size(0, 13);
             this.labelGhostHitPoints.TabIndex = 5;
-            this.labelGhostHitPoints.Text = "ghostHitPoints";
             // 
             // labelGhost
             // 
@@ -146,9 +144,8 @@
             this.labelBatHitPoints.AutoSize = true;
             this.labelBatHitPoints.Location = new System.Drawing.Point(63, 21);
             this.labelBatHitPoints.Name = "labelBatHitPoints";
-            this.labelBatHitPoints.Size = new System.Drawing.Size(64, 13);
+            this.labelBatHitPoints.Size = new System.Drawing.Size(0, 13);
             this.labelBatHitPoints.TabIndex = 3;
-            this.labelBatHitPoints.Text = "batHitPoints";
             // 
             // labelBat
             // 
@@ -180,58 +177,68 @@
             // pictureBoxWeapon2
             // 
             this.pictureBoxWeapon2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxWeapon2.BackgroundImage = global::The_Quest.Properties.Resources.bow;
             this.pictureBoxWeapon2.Location = new System.Drawing.Point(185, 536);
             this.pictureBoxWeapon2.Name = "pictureBoxWeapon2";
             this.pictureBoxWeapon2.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxWeapon2.TabIndex = 1;
             this.pictureBoxWeapon2.TabStop = false;
+            this.pictureBoxWeapon2.Visible = false;
             this.pictureBoxWeapon2.Click += new System.EventHandler(this.OnPictureBoxWeapon2Click);
             // 
             // pictureBoxWeapon1
             // 
             this.pictureBoxWeapon1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxWeapon1.BackgroundImage = global::The_Quest.Properties.Resources.sword;
             this.pictureBoxWeapon1.Location = new System.Drawing.Point(129, 536);
             this.pictureBoxWeapon1.Name = "pictureBoxWeapon1";
             this.pictureBoxWeapon1.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxWeapon1.TabIndex = 2;
             this.pictureBoxWeapon1.TabStop = false;
+            this.pictureBoxWeapon1.Visible = false;
             this.pictureBoxWeapon1.Click += new System.EventHandler(this.OnPictureBoxWeapon1Click);
             // 
             // pictureBoxWeapon3
             // 
             this.pictureBoxWeapon3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxWeapon3.BackgroundImage = global::The_Quest.Properties.Resources.mace;
             this.pictureBoxWeapon3.Location = new System.Drawing.Point(241, 536);
             this.pictureBoxWeapon3.Name = "pictureBoxWeapon3";
             this.pictureBoxWeapon3.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxWeapon3.TabIndex = 3;
             this.pictureBoxWeapon3.TabStop = false;
+            this.pictureBoxWeapon3.Visible = false;
             this.pictureBoxWeapon3.Click += new System.EventHandler(this.OnPictureBoxWeapon3Click);
             // 
             // pictureBoxPotion1
             // 
             this.pictureBoxPotion1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxPotion1.BackgroundImage = global::The_Quest.Properties.Resources.potion_red;
             this.pictureBoxPotion1.Location = new System.Drawing.Point(297, 536);
             this.pictureBoxPotion1.Name = "pictureBoxPotion1";
             this.pictureBoxPotion1.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxPotion1.TabIndex = 4;
             this.pictureBoxPotion1.TabStop = false;
+            this.pictureBoxPotion1.Visible = false;
             this.pictureBoxPotion1.Click += new System.EventHandler(this.OnPictureBoxPotion1Click);
             // 
             // pictureBoxPotion2
             // 
             this.pictureBoxPotion2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxPotion2.BackgroundImage = global::The_Quest.Properties.Resources.potion_blue;
             this.pictureBoxPotion2.Location = new System.Drawing.Point(353, 536);
             this.pictureBoxPotion2.Name = "pictureBoxPotion2";
             this.pictureBoxPotion2.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxPotion2.TabIndex = 5;
             this.pictureBoxPotion2.TabStop = false;
+            this.pictureBoxPotion2.Visible = false;
             this.pictureBoxPotion2.Click += new System.EventHandler(this.OnPictureBoxPotion2Click);
             // 
             // pictureBoxPlayer
             // 
             this.pictureBoxPlayer.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxPlayer.BackgroundImage = global::The_Quest.Properties.Resources.player;
-            this.pictureBoxPlayer.Location = new System.Drawing.Point(145, 196);
+            this.pictureBoxPlayer.Location = new System.Drawing.Point(481, 226);
             this.pictureBoxPlayer.Name = "pictureBoxPlayer";
             this.pictureBoxPlayer.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxPlayer.TabIndex = 6;
@@ -461,6 +468,7 @@
             this.MinimizeBox = false;
             this.Name = "QuestGame";
             this.Text = "The Quest";
+            this.Load += new System.EventHandler(this.QuestGame_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWeapon2)).EndInit();
