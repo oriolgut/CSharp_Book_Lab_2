@@ -61,6 +61,7 @@
             this.buttonAttackDown = new System.Windows.Forms.Button();
             this.buttonAttackLeft = new System.Windows.Forms.Button();
             this.buttonAttackRight = new System.Windows.Forms.Button();
+            this.pictureBoxSwordToCollect = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWeapon2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWeapon1)).BeginInit();
@@ -77,6 +78,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPotionRedToCollect)).BeginInit();
             this.groupBoxMove.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSwordToCollect)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
@@ -224,7 +226,7 @@
             // 
             this.pictureBoxPlayer.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxPlayer.BackgroundImage = global::The_Quest.Properties.Resources.player;
-            this.pictureBoxPlayer.Location = new System.Drawing.Point(145, 121);
+            this.pictureBoxPlayer.Location = new System.Drawing.Point(145, 196);
             this.pictureBoxPlayer.Name = "pictureBoxPlayer";
             this.pictureBoxPlayer.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxPlayer.TabIndex = 6;
@@ -316,6 +318,7 @@
             this.buttonMoveUp.TabIndex = 14;
             this.buttonMoveUp.Text = "↑";
             this.buttonMoveUp.UseVisualStyleBackColor = true;
+            this.buttonMoveUp.Click += new System.EventHandler(this.OnButtonMoveUpClick);
             // 
             // buttonMoveLeft
             // 
@@ -325,6 +328,7 @@
             this.buttonMoveLeft.TabIndex = 15;
             this.buttonMoveLeft.Text = "←";
             this.buttonMoveLeft.UseVisualStyleBackColor = true;
+            this.buttonMoveLeft.Click += new System.EventHandler(this.OnButtonMoveLeftClick);
             // 
             // buttonMoveRight
             // 
@@ -334,6 +338,7 @@
             this.buttonMoveRight.TabIndex = 16;
             this.buttonMoveRight.Text = "→";
             this.buttonMoveRight.UseVisualStyleBackColor = true;
+            this.buttonMoveRight.Click += new System.EventHandler(this.OnButtonMoveRightClick);
             // 
             // buttonMoveDown
             // 
@@ -343,6 +348,7 @@
             this.buttonMoveDown.TabIndex = 17;
             this.buttonMoveDown.Text = "↓";
             this.buttonMoveDown.UseVisualStyleBackColor = true;
+            this.buttonMoveDown.Click += new System.EventHandler(this.ButtonMoveDownClick);
             // 
             // groupBoxMove
             // 
@@ -365,9 +371,9 @@
             this.groupBox1.Controls.Add(this.buttonAttackDown);
             this.groupBox1.Controls.Add(this.buttonAttackLeft);
             this.groupBox1.Controls.Add(this.buttonAttackRight);
-            this.groupBox1.Location = new System.Drawing.Point(776, 524);
+            this.groupBox1.Location = new System.Drawing.Point(749, 524);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(119, 99);
+            this.groupBox1.Size = new System.Drawing.Size(123, 99);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attack";
@@ -408,12 +414,24 @@
             this.buttonAttackRight.Text = "→";
             this.buttonAttackRight.UseVisualStyleBackColor = true;
             // 
+            // pictureBoxSwordToCollect
+            // 
+            this.pictureBoxSwordToCollect.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBoxSwordToCollect.BackgroundImage = global::The_Quest.Properties.Resources.sword;
+            this.pictureBoxSwordToCollect.Location = new System.Drawing.Point(145, 121);
+            this.pictureBoxSwordToCollect.Name = "pictureBoxSwordToCollect";
+            this.pictureBoxSwordToCollect.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxSwordToCollect.TabIndex = 20;
+            this.pictureBoxSwordToCollect.TabStop = false;
+            this.pictureBoxSwordToCollect.Visible = false;
+            // 
             // QuestGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1001, 668);
+            this.Controls.Add(this.pictureBoxSwordToCollect);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxMove);
             this.Controls.Add(this.pictureBoxPotionRedToCollect);
@@ -452,6 +470,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPotionRedToCollect)).EndInit();
             this.groupBoxMove.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSwordToCollect)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -490,6 +509,7 @@
         private System.Windows.Forms.Label labelBat;
         private System.Windows.Forms.Label labelPlayer;
         private System.Windows.Forms.Label labelPlayerHitPoints;
+        private System.Windows.Forms.PictureBox pictureBoxSwordToCollect;
     }
 }
 
