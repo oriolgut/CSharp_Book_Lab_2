@@ -124,6 +124,7 @@ namespace The_Quest
                         WeaponInRoom = new Mace(this, GetRandomLocation(random));
                     break;
                 case 8:
+                    Enemies.Clear();
                     Application.Exit();
                     break;
             }

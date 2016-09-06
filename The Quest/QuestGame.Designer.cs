@@ -384,7 +384,7 @@
             this.groupBox1.Controls.Add(this.buttonAttackRight);
             this.groupBox1.Location = new System.Drawing.Point(749, 524);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(123, 99);
+            this.groupBox1.Size = new System.Drawing.Size(150, 99);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attack";
@@ -393,7 +393,7 @@
             // 
             this.buttonAttackUp.Location = new System.Drawing.Point(39, 12);
             this.buttonAttackUp.Name = "buttonAttackUp";
-            this.buttonAttackUp.Size = new System.Drawing.Size(35, 37);
+            this.buttonAttackUp.Size = new System.Drawing.Size(54, 37);
             this.buttonAttackUp.TabIndex = 14;
             this.buttonAttackUp.Text = "↑";
             this.buttonAttackUp.UseVisualStyleBackColor = true;
@@ -403,7 +403,7 @@
             // 
             this.buttonAttackDown.Location = new System.Drawing.Point(39, 55);
             this.buttonAttackDown.Name = "buttonAttackDown";
-            this.buttonAttackDown.Size = new System.Drawing.Size(35, 33);
+            this.buttonAttackDown.Size = new System.Drawing.Size(54, 33);
             this.buttonAttackDown.TabIndex = 17;
             this.buttonAttackDown.Text = "↓";
             this.buttonAttackDown.UseVisualStyleBackColor = true;
@@ -413,7 +413,7 @@
             // 
             this.buttonAttackLeft.Location = new System.Drawing.Point(0, 36);
             this.buttonAttackLeft.Name = "buttonAttackLeft";
-            this.buttonAttackLeft.Size = new System.Drawing.Size(35, 32);
+            this.buttonAttackLeft.Size = new System.Drawing.Size(33, 32);
             this.buttonAttackLeft.TabIndex = 15;
             this.buttonAttackLeft.Text = "←";
             this.buttonAttackLeft.UseVisualStyleBackColor = true;
@@ -421,7 +421,7 @@
             // 
             // buttonAttackRight
             // 
-            this.buttonAttackRight.Location = new System.Drawing.Point(80, 36);
+            this.buttonAttackRight.Location = new System.Drawing.Point(99, 36);
             this.buttonAttackRight.Name = "buttonAttackRight";
             this.buttonAttackRight.Size = new System.Drawing.Size(35, 32);
             this.buttonAttackRight.TabIndex = 16;

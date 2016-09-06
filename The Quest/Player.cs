@@ -24,7 +24,7 @@ namespace The_Quest
 
         public Player(Game game, Point location) : base(game, location)
         {
-            Hitpoints = 10;
+            Hitpoints = 1000;
         }
 
         public bool IsWeaponEquipped(string weaponName)

@@ -247,7 +247,7 @@ namespace The_Quest
             bool isEnemyUpdated = false;
 
             labelEnemyHitPoints.Text = enemy.HitPoints.ToString();
-
+            labelEnemyHitPoints.Visible = true;
             if (enemy.HitPoints > 0)
             {
                 pictureBoxEnemy.Location = enemy.Location;
