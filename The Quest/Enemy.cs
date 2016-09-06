@@ -8,6 +8,14 @@ namespace The_Quest
         private const int NEAR_PLAYER_DISTANCE = 25;
 
         public int HitPoints { get; private set; }
+        public bool Dead
+        {
+            get
+            {
+                if (HitPoints <= 0) return true;
+                else return false;
+            }
+        }
 
         public Enemy(Game game, Point location, int hitPoints) : base(game, location)
         {

@@ -34,9 +34,14 @@ namespace The_Quest
             foreach (Enemy enemy in Enemies)
                 enemy.Move(random);
         }
+
         public bool CheckPotionUsed(string potionName)
         {
             return _player.CheckPotionUsed(potionName);
+        }
+        public bool IsWeaponEquipped(string weaponName)
+        {
+            return _player.IsWeaponEquipped(weaponName);
         }
         public void Equip(string weaponName)
         {
@@ -91,14 +96,10 @@ namespace The_Quest
                     if (CheckPlayerInventory("Bow"))
                     {
                         if (!CheckPlayerInventory("Blue Potion")|| (CheckPlayerInventory("Blue Potion") && _player.CheckPotionUsed("Blue Potion")))
-                        {
                             WeaponInRoom = new BluePotion(this, GetRandomLocation(random));
-                        }
                     }
                     else
-                    {
                         WeaponInRoom = new Bow(this, GetRandomLocation(random));
-                    }
                     break;
                 case 5:
                     Enemies.Clear();
@@ -116,17 +117,11 @@ namespace The_Quest
                     WeaponInRoom = null;
                     if (CheckPlayerInventory("Mace"))
                     {
-                        if (!CheckPlayerInventory("Red Potion")
-                                || (CheckPlayerInventory("Red Potion")
-                                    && _player.CheckPotionUsed("Red Potion")))
-                        {
+                        if (!CheckPlayerInventory("Red Potion") || (CheckPlayerInventory("Red Potion") && _player.CheckPotionUsed("Red Potion")))
                             WeaponInRoom = new RedPotion(this, GetRandomLocation(random));
-                        }
                     }
                     else
-                    {
                         WeaponInRoom = new Mace(this, GetRandomLocation(random));
-                    }
                     break;
                 case 8:
                     Application.Exit();

@@ -238,7 +238,7 @@
             // 
             this.pictureBoxPlayer.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxPlayer.BackgroundImage = global::The_Quest.Properties.Resources.player;
-            this.pictureBoxPlayer.Location = new System.Drawing.Point(481, 226);
+            this.pictureBoxPlayer.Location = new System.Drawing.Point(439, 253);
             this.pictureBoxPlayer.Name = "pictureBoxPlayer";
             this.pictureBoxPlayer.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxPlayer.TabIndex = 6;
@@ -445,7 +445,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1001, 668);
+            this.ClientSize = new System.Drawing.Size(999, 662);
             this.Controls.Add(this.pictureBoxSwordToCollect);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxMove);

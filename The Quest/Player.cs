@@ -6,6 +6,8 @@ namespace The_Quest
 {
     class Player : Mover
     {
+        private const int RADIUS = 10;
+
         private Weapon _equippedWeapon;
         private List<Weapon> _inventory = new List<Weapon>();
 
@@ -23,6 +25,14 @@ namespace The_Quest
         public Player(Game game, Point location) : base(game, location)
         {
             Hitpoints = 10;
+        }
+
+        public bool IsWeaponEquipped(string weaponName)
+        {
+            if(_equippedWeapon != null)
+                if (weaponName.Equals(_equippedWeapon.Name))
+                    return true;
+            return false;
         }
 
         public void Hit(int maxDamage, Random random)
@@ -47,7 +57,7 @@ namespace The_Quest
             base.location = Move(direction, game.Boundaries);
             if (!game.WeaponInRoom.PickedUp)
             {
-               if (NearBy(game.WeaponInRoom.Location, 5))
+               if (NearBy(game.WeaponInRoom.Location, RADIUS))
                 {
                     game.WeaponInRoom.PickUpWeapon();
                     _inventory.Add(game.WeaponInRoom);
@@ -59,9 +69,7 @@ namespace The_Quest
         public void Attack(Direction direction, Random random)
         {
             if(_equippedWeapon != null)
-            {
                 _equippedWeapon.Attack(direction, random);
-            }
         }
         public bool CheckPotionUsed(string potionName)
         {

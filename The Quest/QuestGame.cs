@@ -14,6 +14,7 @@ namespace The_Quest
     {
         private Game _game;
         private Random _random = new Random();
+        private bool _isPotionNeeded = false;
 
         public QuestGame()
         {
@@ -131,17 +132,18 @@ namespace The_Quest
 
             if(_game.PlayerHitPoints <= 0)
             {
-                MessageBox.Show("You died", "system...");
+                MessageBox.Show("You died", "System...");
                 Application.Exit();
             }
 
-            if (enemiesShown < 0)
+            if (enemiesShown < 1)
             {
                 MessageBox.Show("You have defeated the enemies on this level");
                 _game.NewLevel(_random);
                 UpdateCharacters();
             }
         }
+
         private void SelectInventoryItem(PictureBox item, string itemName, string weaponType)
         {
             if (_game.CheckPlayerInventory(itemName))
@@ -150,6 +152,7 @@ namespace The_Quest
                 RemoveInventoryBorders();
                 item.BorderStyle = BorderStyle.FixedSingle;
                 SetupAttackButtons(weaponType);
+                RemoveInventoryBorders();
             }
         }
         private void RemoveInventoryBorders()
@@ -162,18 +165,19 @@ namespace The_Quest
         }
         private void SetupAttackButtons(string weaponType)
         {
-            if ("weapon".Equals(weaponType.ToLower()))
-            {
-                buttonAttackUp.Text = "Up";
-                buttonAttackDown.Visible = true;
-                buttonAttackLeft.Visible = true;
-                buttonAttackRight.Visible = true;
-            } else if ("potion".Equals(weaponType.ToLower()))
+            if ("potion".Equals(weaponType.ToLower()))
             {
                 buttonAttackUp.Text = "Drink";
                 buttonAttackDown.Visible = false;
                 buttonAttackLeft.Visible = false;
                 buttonAttackRight.Visible = false;
+            }
+            if ("weapon".Equals(weaponType.ToLower()))
+            {
+                    buttonAttackUp.Text = "↑";
+                    buttonAttackDown.Visible = true;
+                    buttonAttackLeft.Visible = true;
+                    buttonAttackRight.Visible = true;
             }
         }
         private void SetPictureBoxVisibility()
@@ -186,18 +190,57 @@ namespace The_Quest
         }
        private void CheckPlayerInventory()
         {
-            if (_game.CheckPlayerInventory("Sword"))
-                pictureBoxWeapon1.Visible = true;
-            if (_game.CheckPlayerInventory("Bow"))
-                pictureBoxWeapon2.Visible = true;
-            if (_game.CheckPlayerInventory("Mace"))
-                pictureBoxWeapon3.Visible = true;
-            if (_game.CheckPlayerInventory("Red Potion"))
-                if (!_game.CheckPotionUsed("Red Potion"))
-                    pictureBoxPotion1.Visible = true;      
-            if (_game.CheckPlayerInventory("Blue Potion"))
-                if (!_game.CheckPotionUsed("Red Potion"))
-                    pictureBoxPotion2.Visible = true;
+            CheckPlayerWeapon("Sword", "Weapon", pictureBoxWeapon1);
+            CheckPlayerWeapon("Bow", "Weapon", pictureBoxWeapon2);
+            CheckPlayerWeapon("Mace", "Weapon", pictureBoxWeapon3);
+
+            CheckPlayerPotion("Blue Potion", "potion", pictureBoxPotion2);
+            CheckPlayerPotion("Red Potion", "potion", pictureBoxPotion1);
+        }
+
+        private void CheckPlayerWeapon(string weaponName, string weaponTyp, PictureBox weaponPictureBox)
+        {
+            weaponPictureBox.BorderStyle = BorderStyle.None;
+            if (_game.CheckPlayerInventory(weaponName))
+            {
+                weaponPictureBox.Visible = true;
+                if (_game.IsWeaponEquipped(weaponName))
+                {
+                    weaponPictureBox.BorderStyle = BorderStyle.FixedSingle;
+                    SetupAttackButtons(weaponTyp);
+                }
+            }
+        }
+
+        private void CheckPlayerPotion(string potionName, string weaponTyp, PictureBox weaponPictureBox)
+        {
+            weaponPictureBox.BorderStyle = BorderStyle.None;
+            if (_game.CheckPlayerInventory(potionName))
+            {
+                if (!_game.CheckPotionUsed(potionName))
+                {
+                    weaponPictureBox.Visible = true;
+                    if (_game.IsWeaponEquipped(potionName))
+                    {
+                        weaponPictureBox.BorderStyle = BorderStyle.FixedSingle;
+                        SetupAttackButtons(weaponTyp);
+                        _isPotionNeeded = true;
+                    }
+                }
+                else
+                {
+                    weaponPictureBox.BorderStyle = BorderStyle.None;
+                    weaponPictureBox.Visible = false;
+                    if (_isPotionNeeded)
+                    {
+                        _game.Equip("Sword");
+                        CheckPlayerWeapon("Sword", "Weapon", pictureBoxWeapon1);
+                        SetupAttackButtons("weapon");
+                        _isPotionNeeded = false;
+                    }
+                }
+            }
+
         }
         private bool UpdateEnemy(Enemy enemy, PictureBox pictureBoxEnemy, Label labelEnemyHitPoints)
         {
@@ -213,7 +256,7 @@ namespace The_Quest
             }
             else
             {
-                pictureBoxEnemy.Visible = false; ;
+                pictureBoxEnemy.Visible = false;
                 labelEnemyHitPoints.Visible = false;
             }
 
@@ -277,8 +320,5 @@ namespace The_Quest
             pictureBoxPotionBlueToCollect.SendToBack();
             pictureBoxPotionRedToCollect.SendToBack();
         }
-
-
-
     }
 }

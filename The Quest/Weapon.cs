@@ -7,6 +7,7 @@ namespace The_Quest
     {
         public abstract string Name { get; }
         public bool PickedUp { get; private set; }
+        private Size _pictureBoxSize = new Size(50, 50);
 
         public Weapon(Game game, Point location) : base(game, location)
         {
@@ -20,28 +21,56 @@ namespace The_Quest
         public abstract void Attack(Direction direction, Random random);
         protected bool DamageEnemy(Direction direction,  int radius, int damage, Random random)
         {
-            Point target = game.PlayerLocation;
-            for (int distance = 0; distance < radius / 2; distance++)
-            {
+            Point playerLocation = game.PlayerLocation;
+
                 foreach(Enemy enemy in game.Enemies)
                 {
-                    if(NearBy(enemy.Location, target, distance))
+                    if(!enemy.Dead && NearBy(playerLocation, enemy, direction, (radius / 2)))
                     {
                         enemy.Hit(damage, random);
                         return true;
                     }
                 }
-                target = Move(direction, target, game.Boundaries);
-            }
             return false;
         }
-        private bool NearBy(Point enemyTarget, Point target, int distance)
+
+        private bool NearBy(Point playerLocation, Enemy enemy, Direction direction, int distance)
         {
-            if (NearBy(enemyTarget, distance) && NearBy(target, distance))
-                return true;
-            else
-                return false;
+            bool isNearby = false;
+
+            Rectangle enemyBoundary = new Rectangle(enemy.Location, _pictureBoxSize);
+            Rectangle playerAttackArea = new Rectangle();
+
+            switch (direction)
+            {
+                case Direction.Up:
+                    playerAttackArea.Location = new Point(playerLocation.X, playerLocation.Y - distance);
+                    playerAttackArea.Width = _pictureBoxSize.Width;
+                    playerAttackArea.Height = distance;
+                    break;
+                case Direction.Right:
+                    playerAttackArea.Location = new Point(playerLocation.X + _pictureBoxSize.Width, playerLocation.Y);
+                    playerAttackArea.Width = distance;
+                    playerAttackArea.Height = _pictureBoxSize.Height;
+                    break;
+                case Direction.Down:
+                    playerAttackArea.Location = new Point(playerLocation.X, playerLocation.Y + _pictureBoxSize.Height);
+                    playerAttackArea.Width = _pictureBoxSize.Width;
+                    playerAttackArea.Height = distance;
+                    break;
+                case Direction.Left:
+                    playerAttackArea.Location = new Point(playerLocation.X + distance, playerLocation.Y);
+                    playerAttackArea.Width = distance;
+                    playerAttackArea.Height = _pictureBoxSize.Height;
+                    break;
+            }
+
+            if (playerAttackArea.IntersectsWith(enemyBoundary))
+                isNearby = true;
+
+            return isNearby;
         }
+
         private Point Move(Direction direction, Point target, Rectangle boundaries)
         {
             target = Move(direction, boundaries);
