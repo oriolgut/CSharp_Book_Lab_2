@@ -23,8 +23,12 @@ namespace The_Quest
         public override void Attack(Direction direction, Random random)
         {
             if (!DamageEnemy(direction, ATTACK_RADIUS, DAMAGE, random))
+            {
                 if (!DamageEnemy(ClockwiseDirection(direction), ATTACK_RADIUS, DAMAGE, random))
+                {
                     DamageEnemy(CounterClockwiseDirection(direction), ATTACK_RADIUS, DAMAGE, random);
+                }
+            }
         }
     }
 }

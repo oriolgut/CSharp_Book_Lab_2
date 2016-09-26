@@ -65,12 +65,7 @@ namespace The_Quest
             foreach (Enemy enemy in Enemies)
                 enemy.Move(random);
         }
-        private Point GetRandomLocation(Random random)
-        {
-            int x = _boundaries.Left + random.Next(_boundaries.Right / 10 - _boundaries.Left / 10) * 10;
-            int y = _boundaries.Top + random.Next(_boundaries.Bottom / 10 - _boundaries.Top / 10) * 10;
-            return new Point(x, y);
-        }
+
         public void NewLevel(Random random)
         {
             _level++;
@@ -128,6 +123,13 @@ namespace The_Quest
                     Application.Exit();
                     break;
             }
+        }
+
+        private Point GetRandomLocation(Random random)
+        {
+            int x = _boundaries.Left + random.Next(_boundaries.Right / 10 - _boundaries.Left / 10) * 10;
+            int y = _boundaries.Top + random.Next(_boundaries.Bottom / 10 - _boundaries.Top / 10) * 10;
+            return new Point(x, y);
         }
     }
 }

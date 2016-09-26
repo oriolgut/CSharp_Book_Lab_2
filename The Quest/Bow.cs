@@ -12,9 +12,7 @@ namespace The_Quest
         private const int ATTACK_RADIUS = 30;
         private const int DAMAGE = 1;
 
-        public Bow(Game game, Point location) : base(game, location)
-        {
-        }
+        public Bow(Game game, Point location) : base(game, location) { }
 
         public override string Name
         {
@@ -27,8 +25,12 @@ namespace The_Quest
         public override void Attack(Direction direction, Random random)
         {
             if (!DamageEnemy(direction, ATTACK_RADIUS, DAMAGE, random))
+            {
                 if (!DamageEnemy(ClockwiseDirection(direction), ATTACK_RADIUS, DAMAGE, random))
+                {
                     DamageEnemy(CounterClockwiseDirection(direction), ATTACK_RADIUS, DAMAGE, random);
+                }
+            }
         }
     }
 }

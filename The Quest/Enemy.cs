@@ -8,6 +8,7 @@ namespace The_Quest
         private const int NEAR_PLAYER_DISTANCE = 25;
 
         public int HitPoints { get; private set; }
+
         public bool Dead
         {
             get
@@ -35,15 +36,22 @@ namespace The_Quest
         protected Direction FindPlayerDirection(Point playerLocation)
         {
             Direction directionToMove;
-
             if (playerLocation.X > location.X + 10)
+            {
                 directionToMove = Direction.Right;
+            }
             else if (playerLocation.X < location.X - 10)
+            {
                 directionToMove = Direction.Left;
+            }
             else if (playerLocation.Y < location.Y - 10)
+            {
                 directionToMove = Direction.Up;
+            }
             else
-                directionToMove = Direction.Down;             
+            {
+                directionToMove = Direction.Down;
+            }                             
             return directionToMove;
         }
     }
